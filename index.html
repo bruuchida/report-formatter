@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Report Formatter</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=7">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <script type="text/javascript" src="./js/script.js"></script>
+        <link rel="icon" href="./icons/favicon.svg">
+    </head>
+    <body>
+        <div class="palette-container">
+            <img src="./icons/palette.svg" alt="" id="palette" onclick="togglePalette()">
+            <div id="themes">
+                <span class="theme-choice theme-dark-default" onclick="setTheme('theme-dark-default')"></span>
+                <span class="theme-choice theme-light-default" onclick="setTheme('theme-light-default')"></span>
+                <span class="theme-choice theme-dark-purple" onclick="setTheme('theme-dark-purple')"></span>
+                <span class="theme-choice theme-dark-pink" onclick="setTheme('theme-dark-pink')"></span>
+                <span class="theme-choice theme-light-purple" onclick="setTheme('theme-light-purple')"></span>
+                <span class="theme-choice theme-light-pink"  onclick="setTheme('theme-light-pink')"></span>
+            </div>
+        </div>
+
+        <main class="content">
+            <h1 class="title">Report Formatter</h1>
+            <div id="form">
+                <div class="field">
+                    <label>Time</label>
+                    <input type="text" id="squad" value="Time "/>
+                </div>
+                <div class="field">
+                    <label>Data</label>
+                    <input id="date" disabled />
+                </div>
+                <!-- loop de tasks deployadas -->
+                <div class="field">
+                    <label>Ambiente</label>
+                    <input type="text" id="project" value=""/>
+                </div>
+                <div class="field">
+                    <label>Horário inicial</label>
+                    <input type="time" id="deploy-time-initial" />
+                    <label>Horário final</label>
+                    <input type="time" id="deploy-time-final"/>
+                </div>
+                <div class="field">
+                    <label>Iniciativa</label>
+                    <input type="text" id="feature" value=""/>
+                </div>
+                <div class="field">
+                    <label>Nome task</label>
+                    <input type="text" id="task-name" value=""/>
+                </div>
+                <div class="field">
+                    <label>Link task</label>
+                    <input type="text" id="task-link" value=""/>
+                </div>
+                <div class="field">
+                    <label>Descrição</label>
+                    <textarea id="task-description"></textarea>
+                </div>
+                <div class="field">
+                    <label>Área</label>
+                    <input type="text" id="task-function" value=""/>
+                </div>
+                <button id="button-format" onclick="getDaily()">
+                    FORMATAR REPORT
+                </button>
+            </div>
+            <div id="result">
+                Pronto! Agora só enviar...
+                <div id="report-formatted">
+                </div>
+                <div class="actions">
+                    <button id="button-back" onclick="backToDaily()">
+                        <img src="./icons/back.svg" alt="">
+                        REVISAR
+                    </button>
+                    <button id="button-copy" onclick="copyContent()">
+                        COPIAR
+                        <img src="./icons/copy.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="contact">
+                <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
+                <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
+            </div>
+            <span id="copied-message"> 📝 Copiado! </span>
+        </footer>
+    </body>
+</html>
