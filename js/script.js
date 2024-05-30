@@ -21,7 +21,7 @@ function getDaily() {
     let taskName = document.querySelector("#task-name").value;
     let taskLink = document.querySelector("#task-link").value;
     let taskDescription = getListFormat(document.querySelector("#task-description").value);
-    let taskFunction = document.querySelector("#task-function").value;
+    let taskArea = document.querySelector("#task-area").value;
 
     let report = `
         <b>${squad}</b><br>
@@ -32,7 +32,7 @@ function getDaily() {
         <b>Nome da tarefa e link: </b><a href='${taskLink}'>${taskName}</a><br>
         <b>Descrição: </b><br>
         <ul>${taskDescription}</ul><br>
-        <b>Área: </b>${taskFunction}<br>
+        <b>Área: </b>${taskArea}<br>
     `;
 
     document.querySelector("#report-formatted").innerHTML = report;

@@ -17,6 +17,7 @@
 
     @media (min-width: 768px) {
         width: 680px;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -29,23 +30,29 @@
 }
 
 .field {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 4px;
 }
 
-.notice {
-    display: none;
-    &.show{ display: block; }
+#deploy-initial {
+    grid-column: 1/2;
 }
 
-.blocking-activities {
-    display: none;
-    &.show{ display: block; }
+#deploy-final {
+    grid-column: 2/2;
+}
+#description {
+    grid-column: -1/1;
 }
 
+#area {
+    grid-column: -1/1;
+}
 
 #button-format {
     width: 100%;
+    grid-column: -1/1;
 }
 
 #result {

@@ -21,8 +21,9 @@
             </div>
         </div>
 
+        <h1 class="title">Report Formatter</h1>
         <main class="content">
-            <h1 class="title">Report Formatter</h1>
+            
             <div id="form">
                 <div class="field">
                     <label>Time</label>
@@ -34,15 +35,18 @@
                 </div>
                 <!-- loop de tasks deployadas -->
                 <div class="field">
-                    <label>Ambiente</label>
-                    <input type="text" id="project" value=""/>
-                </div>
-                <div class="field">
                     <label>Horário inicial</label>
                     <input type="time" id="deploy-time-initial" />
+                </div>
+                <div class="field">
                     <label>Horário final</label>
                     <input type="time" id="deploy-time-final"/>
                 </div>
+                <div class="field">
+                    <label>Ambiente</label>
+                    <input type="text" id="project" value=""/>
+                </div>
+                
                 <div class="field">
                     <label>Iniciativa</label>
                     <input type="text" id="feature" value=""/>
@@ -55,13 +59,13 @@
                     <label>Link task</label>
                     <input type="text" id="task-link" value=""/>
                 </div>
-                <div class="field">
+                <div class="field" id="description">
                     <label>Descrição</label>
                     <textarea id="task-description"></textarea>
                 </div>
-                <div class="field">
+                <div class="field" id="area">
                     <label>Área</label>
-                    <input type="text" id="task-function" value=""/>
+                    <input type="text" id="task-area" value=""/>
                 </div>
                 <button id="button-format" onclick="getDaily()">
                     FORMATAR REPORT
