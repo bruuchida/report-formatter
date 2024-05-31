@@ -12,9 +12,7 @@
     &:hover {
         background-color: var(--hover);
         
-        &::before {
-            display: block;
-        }
+        &::before { @media (min-width: 768px) { display: block; } }
     }
 
     &::before {
@@ -73,7 +71,5 @@
         cursor: pointer;
     }
 
-    &:hover::before {
-        box-shadow: 0.5px 0 10px var(--hover);
-    }
+    &:hover::before { box-shadow: 0.5px 0 10px var(--hover); }
 }

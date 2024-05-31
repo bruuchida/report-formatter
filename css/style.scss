@@ -8,6 +8,8 @@ body {
     background: var(--background);
     font-family: Arial;
     color: var(--text);
+    min-width: 360px;
+    width: 100%;
 }
 
 a {
@@ -38,6 +40,11 @@ textarea {
     height: 60px;
     &::placeholder { color: var(--text); }
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator { 
+    filter: var(--icon-color);
+}
+
 
 button {
     width: max-content;

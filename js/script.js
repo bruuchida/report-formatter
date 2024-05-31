@@ -11,7 +11,7 @@ window.onload = () => {
     })
 }
 
-function getDaily() {
+function getReport() {
     let squad = document.querySelector("#squad").value;
     let date = document.querySelector("#date").value;
     let project = document.querySelector("#project").value;
@@ -73,7 +73,7 @@ function togglePalette() {
     document.querySelector('#themes').classList.toggle('show');
 }
 
-function backToDaily() {
+function backToReport() {
     document.querySelector('#form').style.display = "grid";
     document.querySelector('#result').style.display = "none";
 }
