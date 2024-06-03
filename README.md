@@ -4,7 +4,7 @@ Um formulário que promete formatar o seu report de deploy. Dedicado para amigos
 ## Criado com
 
 - HTML 5
-- CSS 3
+- SASS
 - JS
 
 ## Acesso
