@@ -65,3 +65,7 @@ button {
     img { filter: var(--icon-color); }
     &:hover { background: var(--button-hover); }
 }
+
+ul {
+    margin: 0;
+}

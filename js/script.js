@@ -30,8 +30,8 @@ function getReport() {
         <b>Hora: ${deployTimeInitial} - ${deployTimeFinal}</b><br>
         <b>Iniciativa: </b>${feature}<br>
         <b>Nome da tarefa e link: </b><a href='${taskLink}'>${taskName}</a><br>
-        <b>Descrição: </b><br>
-        <ul>${taskDescription}</ul><br>
+        <b>Descrição: </b>
+        <ul>${taskDescription}</ul>
         <b>Área: </b>${taskArea}<br>
     `;
 
