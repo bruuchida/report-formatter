@@ -9,19 +9,12 @@
         <link rel="icon" href="./icons/favicon.svg">
     </head>
     <body>
-        <div class="palette-container">
-            <img src="./icons/palette.svg" alt="" id="palette" onclick="togglePalette()">
-            <div id="themes">
-                <span class="theme-choice theme-dark-default" onclick="setTheme('theme-dark-default')"></span>
-                <span class="theme-choice theme-light-default" onclick="setTheme('theme-light-default')"></span>
-                <span class="theme-choice theme-dark-purple" onclick="setTheme('theme-dark-purple')"></span>
-                <span class="theme-choice theme-dark-pink" onclick="setTheme('theme-dark-pink')"></span>
-                <span class="theme-choice theme-light-purple" onclick="setTheme('theme-light-purple')"></span>
-                <span class="theme-choice theme-light-pink"  onclick="setTheme('theme-light-pink')"></span>
+        <header class="header">
+            <h1 class="title">Report Formatter</h1>
+            <div class="palette-container">
+                <img src="./icons/sun.svg" id="theme" onclick="togglePalette()">
             </div>
-        </div>
-
-        <h1 class="title">Report Formatter</h1>
+        </header>        
         <main class="content">
             
             <div id="form">
