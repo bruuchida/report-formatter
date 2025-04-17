@@ -58,12 +58,12 @@ function copyContent() {
 
 /* Theme */
 function initTheme() {
-    const theme = localStorage.getItem('theme')
-    setTheme(theme !== null ? theme : 'theme-dark-default');
+    const theme = localStorage.getItem('selected-theme')
+    setTheme(theme !== null ? theme : 'theme-light');
 }
 
 function setTheme(theme) {
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('selected-theme', theme);
     document.body.classList = theme;
 }
 

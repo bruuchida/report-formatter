@@ -1,9 +1,6 @@
 .content {
     width: 300px;
     height: fit-content;
-    background: var(--form);
-    padding: 20px;
-    border-radius: 10px;
     margin: 0 auto;
 
     @media (min-width: 580px) {
@@ -39,10 +36,14 @@
     grid-column: -1/1;
 }
 
-#button-format {
-    width: 100%;
-    grid-column: -1/1;
+#button-visualize {
+    background: var(--button-visualize);
 }
+
+#button-copy {
+    background: var(--button-copy);
+}
+
 
 #result {
     display: none;

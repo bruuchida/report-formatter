@@ -4,6 +4,9 @@
         <title>Report Formatter</title>
         <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style.css">
         <script type="text/javascript" src="./js/script.js"></script>
         <link rel="icon" href="./icons/favicon.svg">
@@ -12,7 +15,7 @@
         <header class="header">
             <h1 class="title">Report Formatter</h1>
             <div class="palette-container">
-                <img src="./icons/sun.svg" id="theme" onclick="togglePalette()">
+                <img id="theme" src="./icons/sun.svg" width="55px" onclick="togglePalette()">
             </div>
         </header>        
         <main class="content">
@@ -60,22 +63,26 @@
                     <label>Área</label>
                     <input type="text" id="task-area" value=""/>
                 </div>
-                <button id="button-format" onclick="getReport()">
-                    FORMATAR REPORT
-                </button>
+                <div class="actions">
+                    <button id="button-visualize" onclick="getReport()">
+                        Visualizar
+                    </button>
+                    <button id="button-copy" onclick="copyContent()">
+                        Copiar
+                    </button>
+                </div>
+                
             </div>
             <div id="result">
-                Pronto! Agora só enviar...
+                Visualizando formatação
                 <div id="report-formatted">
                 </div>
                 <div class="actions">
-                    <button id="button-back" onclick="backToReport()">
-                        <img src="./icons/back.svg" alt="">
-                        REVISAR
+                    <button id="button-visualize" onclick="backToReport()">
+                        Editar
                     </button>
                     <button id="button-copy" onclick="copyContent()">
-                        COPIAR
-                        <img src="./icons/copy.svg" alt="">
+                        Copiar
                     </button>
                 </div>
             </div>

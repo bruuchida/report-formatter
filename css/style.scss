@@ -1,16 +1,15 @@
-@import url("./theme.css");
-@import url("./palette.css");
-@import url("./header.css");
-@import url("./form.css");
-@import url("./footer.css");
+@use "./theme.css";
+@use "./header.css";
+@use"./form.css";
+@use"./footer.css";
 
 body {
     margin: 0;
     background: var(--background);
-    font-family: Arial;
+    font-family: 'Pixelify Sans', sans-serif;
     color: var(--text);
     min-width: 360px;
-    width: 100%;
+    font-size: 20px;
 }
 
 a {
@@ -49,22 +48,18 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 button {
     width: max-content;
-    height: 50px;
+    height: 34px;
     color: var(--text);
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Pixelify Sans', sans-serif;
     background: var(--button);
     cursor: pointer;
     border: 0;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
     padding: 0 20px;
-    
-    img { filter: var(--icon-color); }
-    &:hover { background: var(--button-hover); }
 }
 
 ul {
