@@ -4,11 +4,6 @@ window.onload = () => {
     initTheme();
     getTodayDate();
     document.getElementById('task-description').placeholder = 'Um item por linha'
-
-    // document.addEventListener('click', e => {
-    //     if (e.target.id !== 'palette' && !e.target.classList.contains('theme-choice') 
-    //         && document.querySelector('#themes').classList.contains('show')) togglePalette();
-    // })
 }
 
 function getReport() {
@@ -25,7 +20,7 @@ function getReport() {
     let taskArea = document.querySelector("#task-area").value;
 
     report = `
-        <b>${squad}</b><br>
+        <b>Time ${squad}</b><br>
         <b><i>Data: ${date}</i></b><br>
         <b>Ambiente: </b>${project}<br>
         <b>Hora: ${deployTimeInitial}</b><br>
