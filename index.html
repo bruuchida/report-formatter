@@ -13,38 +13,40 @@
     </head>
     <body>
         <header class="header">
-            <h1 class="title">Report Formatter</h1>
-            <div class="palette-container">
-                <img id="theme" src="./icons/sun.svg" width="55px" onclick="togglePalette()">
+            <div class="header-content">
+                <h1 class="title">Report Formatter</h1>
+                <div class="theme-container">
+                    <img id="theme" src="./icons/theme-light.svg" width="55px" onclick="toggleTheme()">
+                </div>
             </div>
         </header>        
         <main class="content">
+            <div id="squad-field" class="field">
+                <label>Time</label>
+                <input type="text" id="squad" value="Time "/>
+            </div>
             
             <div id="form">
-                <div class="field">
-                    <label>Time</label>
-                    <input type="text" id="squad" value="Time "/>
-                </div>
                 <div class="field">
                     <label>Data</label>
                     <input id="date" disabled />
                 </div>
                 <!-- loop de tasks deployadas -->
                 <div class="field">
-                    <label>Horário inicial</label>
+                    <label>Horas</label>
                     <input type="time" id="deploy-time-initial" />
                 </div>
-                <div class="field">
+                <!-- <div class="field">
                     <label>Horário final</label>
                     <input type="time" id="deploy-time-final"/>
-                </div>
+                </div> -->
                 <div class="field">
                     <label>Ambiente</label>
                     <input type="text" id="project" value=""/>
                 </div>
                 
                 <div class="field">
-                    <label>Iniciativa</label>
+                    <label>Épico</label>
                     <input type="text" id="feature" value=""/>
                 </div>
                 <div class="field">
@@ -64,10 +66,10 @@
                     <input type="text" id="task-area" value=""/>
                 </div>
                 <div class="actions">
-                    <button id="button-visualize" onclick="getReport()">
+                    <button id="button-visualize" onclick="visualizeReport()">
                         Visualizar
                     </button>
-                    <button id="button-copy" onclick="copyContent()">
+                    <button id="button-copy" onclick="getReportAndCopy()">
                         Copiar
                     </button>
                 </div>
@@ -84,6 +86,7 @@
                     <button id="button-copy" onclick="copyContent()">
                         Copiar
                     </button>
+                    <span id="copied-message"> 📝 Copiado! </span>
                 </div>
             </div>
         </main>
@@ -93,7 +96,6 @@
                 <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
                 <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
             </div>
-            <span id="copied-message"> 📝 Copiado! </span>
         </footer>
     </body>
 </html>

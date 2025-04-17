@@ -1,10 +1,17 @@
 .header {
-    display: flex;
-    padding: 8px 12px;
     height: 55px;
-    justify-content: space-between;
-    align-items: center;
+    padding: 8px 12px;
     background: rgba(240, 236, 236, 0.61);
+    display: flex;
+    justify-content: center;
+
+    &-content {
+        width: 100%;
+        max-width: 700px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 .title {
@@ -15,8 +22,9 @@
     height: 30px;
 }
 
-.palette-container {
+.theme-container {
     width: 55px;
     height: 55px;
     cursor: pointer;
+    border-radius: 50%;
 }

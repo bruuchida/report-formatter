@@ -17,12 +17,19 @@
 }
 
 .header {
-  display: flex;
-  padding: 8px 12px;
   height: 55px;
+  padding: 8px 12px;
+  background: rgba(240, 236, 236, 0.61);
+  display: flex;
+  justify-content: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(240, 236, 236, 0.61);
 }
 
 .title {
@@ -33,16 +40,18 @@
   height: 30px;
 }
 
-.palette-container {
+.theme-container {
   width: 55px;
   height: 55px;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .content {
   width: 300px;
   height: fit-content;
   margin: 0 auto;
+  padding-top: 18px;
 }
 
 @media (min-width: 580px) {
@@ -56,6 +65,7 @@
   }
 }
 #form {
+  padding-top: 22px;
   display: grid;
   gap: 12px;
 }
@@ -94,6 +104,7 @@
 
 #report-formatted {
   background: var(--input);
+  font-family: sans-serif;
   padding: 10px;
   margin: 10px 0;
   border-radius: 10px;
@@ -104,6 +115,7 @@
 .actions {
   display: flex;
   justify-content: space-between;
+  grid-column: 1/-1;
 }
 
 .footer {

@@ -5,39 +5,54 @@ window.onload = () => {
     getTodayDate();
     document.getElementById('task-description').placeholder = 'Um item por linha'
 
-    document.addEventListener('click', e => {
-        if (e.target.id !== 'palette' && !e.target.classList.contains('theme-choice') 
-            && document.querySelector('#themes').classList.contains('show')) togglePalette();
-    })
+    // document.addEventListener('click', e => {
+    //     if (e.target.id !== 'palette' && !e.target.classList.contains('theme-choice') 
+    //         && document.querySelector('#themes').classList.contains('show')) togglePalette();
+    // })
 }
 
 function getReport() {
+    let report = "";
     let squad = document.querySelector("#squad").value;
     let date = document.querySelector("#date").value;
     let project = document.querySelector("#project").value;
     let deployTimeInitial = document.querySelector("#deploy-time-initial").value;
-    let deployTimeFinal = document.querySelector("#deploy-time-final").value;
+    // let deployTimeFinal = document.querySelector("#deploy-time-final").value;
     let feature = document.querySelector("#feature").value;
     let taskName = document.querySelector("#task-name").value;
     let taskLink = document.querySelector("#task-link").value;
     let taskDescription = getListFormat(document.querySelector("#task-description").value);
     let taskArea = document.querySelector("#task-area").value;
 
-    let report = `
+    report = `
         <b>${squad}</b><br>
         <b><i>Data: ${date}</i></b><br>
         <b>Ambiente: </b>${project}<br>
-        <b>Hora: ${deployTimeInitial} - ${deployTimeFinal}</b><br>
-        <b>Iniciativa: </b>${feature}<br>
+        <b>Hora: ${deployTimeInitial}</b><br>
+        <b>Épico: </b>${feature}<br>
         <b>Nome da tarefa e link: </b><a href='${taskLink}'>${taskName}</a><br>
-        <b>Descrição: </b>
-        <ul>${taskDescription}</ul>
-        <b>Área: </b>${taskArea}<br>
     `;
 
-    document.querySelector("#report-formatted").innerHTML = report;
+    if (taskDescription) {
+        report += `
+            <b>Descrição: </b>
+            <ul>${taskDescription}</ul>
+        `;
+    }
 
+    if (taskArea) {
+        report += `
+            <b>Área: </b>${taskArea}<br></br>
+        `;
+    }    
+
+    document.querySelector("#report-formatted").innerHTML = report;
+}
+
+function visualizeReport() {
+    getReport();
     document.querySelector('#form').style.display = "none";
+    document.querySelector('#squad-field').style.display = "none";
     
     document.querySelector('#result').style.display = "block";
 }
@@ -50,10 +65,17 @@ function copyContent() {
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
 
-    document.querySelector('#copied-message').classList.add('show');
-    setTimeout(()=> {
-        document.querySelector('#copied-message').classList.remove('show');
-    }, 2000);
+    // document.querySelector('#copied-message').classList.add('show');
+    // setTimeout(()=> {
+    //     document.querySelector('#copied-message').classList.remove('show');
+    // }, 2000);
+}
+
+function getReportAndCopy() {
+    getReport();
+    if (document.querySelector('#report-formatted')) {
+        copyContent();
+    }
 }
 
 /* Theme */
@@ -65,15 +87,20 @@ function initTheme() {
 function setTheme(theme) {
     localStorage.setItem('selected-theme', theme);
     document.body.classList = theme;
+    document.querySelector('#theme').src = `./icons/${theme}.svg`
 }
 
 
 /* Toggles */
-function togglePalette() {
-    document.querySelector('#themes').classList.toggle('show');
+function toggleTheme() {
+    const theme = localStorage.getItem('selected-theme')
+    if (!theme) initTheme()
+    if (theme === 'theme-light') setTheme('theme-dark')
+    if (theme === 'theme-dark') setTheme('theme-light')
 }
 
 function backToReport() {
+    document.querySelector('#squad-field').style.display = "flex";
     document.querySelector('#form').style.display = "grid";
     document.querySelector('#result').style.display = "none";
 }
