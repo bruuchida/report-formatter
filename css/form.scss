@@ -60,6 +60,12 @@
     line-height: 30px;
 }
 
+#report-content {
+    position: absolute;
+    opacity: 0;
+    font-size: 0;
+}
+
 .actions {
     display: flex;
     justify-content: space-between;

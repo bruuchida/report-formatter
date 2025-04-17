@@ -8,6 +8,7 @@ window.onload = () => {
 
 function getReport() {
     let report = "";
+    document.querySelector("#report-formatted").innerHTML = report;
     let squad = document.querySelector("#squad").value;
     let date = document.querySelector("#date").value;
     let project = document.querySelector("#project").value;
@@ -42,19 +43,19 @@ function getReport() {
     }    
 
     document.querySelector("#report-formatted").innerHTML = report;
+    document.querySelector("#report-content").innerHTML = report;
 }
 
 function visualizeReport() {
     getReport();
     document.querySelector('#form').style.display = "none";
     document.querySelector('#squad-field').style.display = "none";
-    
     document.querySelector('#result').style.display = "block";
 }
 
 function copyContent() {
     const range = document.createRange();
-    range.selectNode(document.querySelector("#report-formatted"));
+    range.selectNode(document.querySelector("#report-content"));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
     document.execCommand("copy");
@@ -68,9 +69,7 @@ function copyContent() {
 
 function getReportAndCopy() {
     getReport();
-    if (document.querySelector('#report-formatted')) {
-        copyContent();
-    }
+    copyContent();
 }
 
 /* Theme */
