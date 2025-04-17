@@ -25,14 +25,12 @@ input, textarea {
     color: var(--input-text);
     background: var(--input);
     border: 0;
-    border-radius: 10px;
     padding: 12px;    
     outline: none;
-    border: 2px solid var(--form);
 }
 
-input:focus, textarea:focus {
-    border: 2px solid var(--button);
+input {
+    height: 14px;
 }
 
 textarea {

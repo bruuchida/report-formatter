@@ -175,8 +175,8 @@ input, textarea {
   outline: none;
 }
 
-input:focus, textarea:focus {
-  border: 2px solid var(--button);
+input {
+  height: 14px;
 }
 
 textarea {
