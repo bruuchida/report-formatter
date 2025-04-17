@@ -1,17 +1,21 @@
 .theme-dark {
-  --background: rgba(191, 222, 243, 0.84);
-  --form: #EDEDED;
+  --header: rgba(13, 19, 26, 0.47);
+  --background: rgba(58, 85, 120, 0.71);
+  --form: rgba(153, 217, 234, 0.12);
   --input: #F1F1F1;
-  --text: #1E1E1E;
+  --text: #e7e7e7;
+  --input-text: #1E1E1E;
   --button-visualize: #709AD1;
-  --button-copy: #FFD152;
+  --button-copy: #164fa5;
 }
 
 .theme-light {
+  --header: rgba(240, 236, 236, 0.61);
   --background: rgba(191, 222, 243, 0.84);
   --form: #EDEDED;
   --input: #F1F1F1;
   --text: #1E1E1E;
+  --input-text: #1E1E1E;
   --button-visualize: #709AD1;
   --button-copy: #FFD152;
 }
@@ -19,7 +23,7 @@
 .header {
   height: 55px;
   padding: 8px 12px;
-  background: rgba(240, 236, 236, 0.61);
+  background: var(--header);
   display: flex;
   justify-content: center;
 }
@@ -103,7 +107,7 @@
 }
 
 #report-formatted {
-  background: var(--input);
+  background: var(--form);
   font-family: sans-serif;
   padding: 10px;
   margin: 10px 0;
@@ -165,7 +169,7 @@ a {
 input, textarea {
   font-family: Arial;
   font-size: 14px;
-  color: var(--text);
+  color: var(--input-text);
   background: var(--input);
   border: 0;
   border-radius: 10px;
@@ -183,7 +187,7 @@ textarea {
   height: 60px;
 }
 textarea::placeholder {
-  color: var(--text);
+  color: var(--input-text);
 }
 
 input[type=time]::-webkit-calendar-picker-indicator {

@@ -22,7 +22,7 @@ a {
 input, textarea {
     font-family: Arial;
     font-size: 14px;
-    color: var(--text);
+    color: var(--input-text);
     background: var(--input);
     border: 0;
     border-radius: 10px;
@@ -38,7 +38,7 @@ input:focus, textarea:focus {
 textarea {
     resize: vertical;
     height: 60px;
-    &::placeholder { color: var(--text); }
+    &::placeholder { color: var(--input-text); }
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator { 
