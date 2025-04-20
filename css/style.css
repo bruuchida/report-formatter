@@ -86,6 +86,10 @@
   gap: 4px;
 }
 
+#deploy-time-field, #deploy-time-anytime-field {
+  display: none;
+}
+
 #description {
   grid-column: -1/1;
 }

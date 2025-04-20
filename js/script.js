@@ -4,6 +4,16 @@ window.onload = () => {
     initTheme();
     getTodayDate();
     document.getElementById('task-description').placeholder = 'Um item por linha';
+    document.querySelector("#project").addEventListener("input", () => {
+        let project = document.querySelector("#project").value;
+        if (project === "fm-site-br") {
+            document.querySelector("#deploy-time-field").style.display = "grid";
+            document.querySelector("#deploy-time-anytime-field").style.display = "none";
+        } else {
+            document.querySelector("#deploy-time-field").style.display = "none";
+            document.querySelector("#deploy-time-anytime-field").style.display = "grid";
+        }
+    })
 }
 
 function getReport() {
@@ -12,8 +22,18 @@ function getReport() {
     let squad = document.querySelector("#squad").value;
     let date = document.querySelector("#date").value;
     let project = document.querySelector("#project").value;
-    let deployTimeInitial = document.querySelector("#deploy-time-initial").value;
+    
+    // let deployTimeInitial = document.querySelector("#deploy-time-initial").value;
     // let deployTimeFinal = document.querySelector("#deploy-time-final").value;
+
+    let deployTime
+
+    if (project === 'fm-site-br') {
+        deployTime = document.querySelector("#deploy-time").value;
+    } else {
+        deployTime = document.querySelector("#deploy-time-anytime").value;
+    }
+
     let feature = document.querySelector("#feature").value;
     let taskName = document.querySelector("#task-name").value;
     let taskLink = document.querySelector("#task-link").value;
@@ -24,7 +44,7 @@ function getReport() {
         <b>Time ${squad}</b><br>
         <b><i>Data: ${date}</i></b><br>
         <b>Ambiente: </b>${project}<br>
-        <b>Hora: ${deployTimeInitial}</b><br>
+        <b>Hora: ${deployTime}</b><br>
         <b>Épico: </b>${feature}<br>
         <b>Nome da tarefa e link: </b><a href='${taskLink}'>${taskName}</a><br>
     `;
@@ -70,6 +90,11 @@ function copyContent() {
 function getReportAndCopy() {
     getReport();
     copyContent();
+}
+
+function checkDeployTime() {
+   
+   
 }
 
 /* Theme */

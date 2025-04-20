@@ -28,21 +28,9 @@
             
             <div id="form">
                 <div class="field">
-                    <label>Data</label>
-                    <input id="date" disabled />
-                </div>
-                <!-- loop de tasks deployadas -->
-                <div class="field">
-                    <label>Horas</label>
-                    <input type="time" id="deploy-time-initial" />
-                </div>
-                <!-- <div class="field">
-                    <label>Horário final</label>
-                    <input type="time" id="deploy-time-final"/>
-                </div> -->
-                <div class="field">
                     <label>Ambiente</label>
                     <select name="project" id="project">
+                        <option value=""></option>
                         <option value="fm-site-br">fm-site-br</option>
                         <option value="fm-seo-pages-br">fm-seo-pages-br</option>
                         <option value="fm-admin-br">fm-admin-br</option>
@@ -61,7 +49,24 @@
                         <option value="outro">Outro</option>
                     </select>
                 </div>
-                
+                <div class="field">
+                    <label>Data</label>
+                    <input id="date" disabled />
+                </div>
+                <!-- loop de tasks deployadas -->
+                <div class="field" id="deploy-time-field">
+                    <label>Horas</label>
+                    <select name="deploy-time" id="deploy-time">
+                        <option value="09h">09h</option>
+                        <option value="10h30">10h30</option>
+                        <option value="14h">14h</option>
+                        <option value="16h30">16h30</option>
+                    </select>
+                </div>
+                <div class="field" id="deploy-time-anytime-field">
+                    <label>Horário</label>
+                    <input type="time" id="deploy-time-anytime"/>
+                </div>             
                 <div class="field">
                     <label>Épico</label>
                     <input type="text" id="feature" value=""/>
