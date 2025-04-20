@@ -3,7 +3,7 @@ const date = new Date();
 window.onload = () => {
     initTheme();
     getTodayDate();
-    document.getElementById('task-description').placeholder = 'Um item por linha'
+    document.getElementById('task-description').placeholder = 'Um item por linha';
 }
 
 function getReport() {
