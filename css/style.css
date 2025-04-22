@@ -98,6 +98,10 @@
   grid-column: -1/1;
 }
 
+#feature-field {
+  grid-column: 3/1;
+}
+
 #button-visualize {
   background: var(--button-visualize);
 }
@@ -147,7 +151,7 @@
 
 #copied-message {
   padding: 10px;
-  background-color: var(--ballon);
+  background-color: var(--button-copy);
   color: var(--text);
   border-radius: 10px;
   position: fixed;
@@ -185,10 +189,6 @@ input, textarea, select {
   outline: none;
 }
 
-input {
-  height: 14px;
-}
-
 textarea {
   resize: vertical;
   height: 60px;
@@ -199,6 +199,10 @@ textarea::placeholder {
 
 input[type=time]::-webkit-calendar-picker-indicator {
   filter: var(--icon-color);
+}
+
+input:disabled {
+  background-color: #ccc8c8;
 }
 
 button {

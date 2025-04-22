@@ -15,8 +15,10 @@ function getReport() {
     let date = document.querySelector("#date").value
     let project
 
-    if (document.querySelector("#project").value === 'outro') {
+    if (document.querySelector("#project").value == 'outro') {
         project = document.querySelector('#project-custom').value
+    } else {
+        project = document.querySelector("#project").value
     }
 
     let deployTime

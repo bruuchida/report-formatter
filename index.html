@@ -21,6 +21,10 @@
             </div>
         </header>        
         <main class="content">
+            <div class="field invisible">
+                <label>Data</label>
+                <input id="date" disabled />
+            </div>
             <div id="squad-field" class="field">
                 <label>Time</label>
                 <input type="text" id="squad" value=""/>
@@ -53,10 +57,6 @@
                     <label>Digite o nome do projeto</label>
                     <input type="text" id="project-custom" value=""/>
                 </div>
-                <div class="field">
-                    <label>Data</label>
-                    <input id="date" disabled />
-                </div>
                 <div class="field invisible" id="deploy-time-field">
                     <label>Horas</label>
                     <select name="deploy-time" id="deploy-time">
@@ -70,7 +70,7 @@
                     <label>Horário</label>
                     <input type="time" id="deploy-time-anytime"/>
                 </div>             
-                <div class="field">
+                <div class="field" id="feature-field">
                     <label>Épico</label>
                     <input type="text" id="feature" value=""/>
                 </div>

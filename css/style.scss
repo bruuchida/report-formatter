@@ -29,10 +29,6 @@ input, textarea, select {
     outline: none;
 }
 
-input {
-    height: 14px;
-}
-
 textarea {
     resize: vertical;
     height: 60px;
@@ -41,6 +37,10 @@ textarea {
 
 input[type="time"]::-webkit-calendar-picker-indicator { 
     filter: var(--icon-color);
+}
+
+input:disabled {
+    background-color: #ccc8c8;
 }
 
 

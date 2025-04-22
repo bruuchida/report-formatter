@@ -42,6 +42,10 @@
     grid-column: -1/1;
 }
 
+#feature-field {
+    grid-column: 3/1;
+}
+
 #button-visualize {
     background: var(--button-visualize);
 }
