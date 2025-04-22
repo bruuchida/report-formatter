@@ -14,21 +14,9 @@ function getReport() {
     document.querySelector("#report-formatted").innerHTML = report
     let squad = document.querySelector("#squad").value
     let date = document.querySelector("#date").value
-    let project
+    let project = document.querySelector("#project").value
 
-    if (document.querySelector("#project").value == 'outro') {
-        project = document.querySelector('#project-custom').value
-    } else {
-        project = document.querySelector("#project").value
-    }
-
-    let deployTime
-
-    if (project === 'fm-site-br') {
-        deployTime = document.querySelector("#deploy-time").value
-    } else {
-        deployTime = document.querySelector("#deploy-time-anytime").value
-    }
+    let deployTime = document.querySelector("#deploy-time").value
 
     let feature = document.querySelector("#feature").value
     let taskName = document.querySelector("#task-name").value
@@ -83,25 +71,6 @@ function copyContent() {
 function getReportAndCopy() {
     getReport()
     copyContent()
-}
-
-function checkDeployTime() {
-    document.querySelector("#project").addEventListener("input", () => {
-        let project = document.querySelector("#project").value
-        if (project === "fm-site-br") {
-            document.querySelector("#deploy-time-field").classList.remove("invisible")
-            document.querySelector("#deploy-time-anytime-field").classList.add("invisible")
-        } else {
-            document.querySelector("#deploy-time-field").classList.add("invisible")
-            document.querySelector("#deploy-time-anytime-field").classList.remove("invisible")
-
-            if (project === "outro") {
-                document.querySelector("#project-custom-field").classList.remove("invisible")
-            } else {
-                document.querySelector("#project-custom-field").classList.add("invisible")
-            }
-        }
-    })
 }
 
 /* Squad */
