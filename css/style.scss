@@ -1,15 +1,15 @@
-@import url("./theme.css");
-@import url("./palette.css");
-@import url("./form.css");
-@import url("./footer.css");
+@use "./theme.css";
+@use "./header.css";
+@use"./form.css";
+@use"./footer.css";
 
 body {
     margin: 0;
     background: var(--background);
-    font-family: Arial;
+    font-family: 'Pixelify Sans', sans-serif;
     color: var(--text);
     min-width: 360px;
-    width: 100%;
+    font-size: 20px;
 }
 
 a {
@@ -19,51 +19,45 @@ a {
     color: var(--text);
 }
 
-input, textarea {
+input, textarea, select {
     font-family: Arial;
     font-size: 14px;
-    color: var(--text);
+    color: var(--input-text);
     background: var(--input);
     border: 0;
-    border-radius: 10px;
     padding: 12px;    
     outline: none;
-    border: 2px solid var(--form);
-}
-
-input:focus, textarea:focus {
-    border: 2px solid var(--button);
 }
 
 textarea {
     resize: vertical;
     height: 60px;
-    &::placeholder { color: var(--text); }
+    &::placeholder { color: var(--input-text); }
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator { 
     filter: var(--icon-color);
 }
 
+input:disabled {
+    background-color: #ccc8c8;
+}
+
 
 button {
     width: max-content;
-    height: 50px;
+    height: 34px;
     color: var(--text);
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Pixelify Sans', sans-serif;
     background: var(--button);
     cursor: pointer;
     border: 0;
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
     padding: 0 20px;
-    
-    img { filter: var(--icon-color); }
-    &:hover { background: var(--button-hover); }
 }
 
 ul {
