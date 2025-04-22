@@ -2,10 +2,11 @@ const date = new Date()
 
 window.onload = () => {
     initTheme()
+    getSquad()
     getTodayDate()
     document.getElementById('task-description').placeholder = 'Um item por linha'
     checkDeployTime()
-    checkCustomProject()
+    initSquad()
 }
 
 function getReport() {
@@ -106,6 +107,28 @@ function checkDeployTime() {
         }
     })
 }
+
+/* Squad */
+function saveSquad() {
+    let squad = document.querySelector("#squad").value
+    localStorage.setItem('squad', squad)
+    document.querySelector("#button-save").classList.add("invisible")
+}
+
+function getSquad() {
+    const squad = localStorage.getItem('squad')
+    document.querySelector("#squad").value = squad
+}
+
+function initSquad() {
+    document.querySelector("#squad").addEventListener("focus", () => {
+        document.querySelector("#button-save").classList.remove("invisible")
+    })
+    document.querySelector("#squad").addEventListener("blur", () => {
+        document.querySelector("#button-save").classList.add("invisible")
+    })
+}
+
 
 /* Theme */
 function initTheme() {
