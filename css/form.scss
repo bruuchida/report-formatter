@@ -34,19 +34,11 @@
     display: none;
 }
 
-#description {
+.fullsize {
     grid-column: -1/1;
 }
 
-#area {
-    grid-column: -1/1;
-}
-
-#feature-field {
-    grid-column: 1 / -1;
-}
-
-#button-visualize {
+#button-visualize, #button-save {
     background: var(--button-visualize);
 }
 

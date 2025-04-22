@@ -2,10 +2,11 @@ const date = new Date()
 
 window.onload = () => {
     initTheme()
+    getSquad()
     getTodayDate()
     document.getElementById('task-description').placeholder = 'Um item por linha'
     checkDeployTime()
-    checkCustomProject()
+    initSquad()
 }
 
 function getReport() {
@@ -13,21 +14,9 @@ function getReport() {
     document.querySelector("#report-formatted").innerHTML = report
     let squad = document.querySelector("#squad").value
     let date = document.querySelector("#date").value
-    let project
+    let project = document.querySelector("#project").value
 
-    if (document.querySelector("#project").value == 'outro') {
-        project = document.querySelector('#project-custom').value
-    } else {
-        project = document.querySelector("#project").value
-    }
-
-    let deployTime
-
-    if (project === 'fm-site-br') {
-        deployTime = document.querySelector("#deploy-time").value
-    } else {
-        deployTime = document.querySelector("#deploy-time-anytime").value
-    }
+    let deployTime = document.querySelector("#deploy-time").value
 
     let feature = document.querySelector("#feature").value
     let taskName = document.querySelector("#task-name").value
@@ -76,11 +65,7 @@ function copyContent() {
     window.getSelection().addRange(range)
     document.execCommand("copy")
     window.getSelection().removeAllRanges()
-
-    document.querySelector('#copied-message').classList.add('show')
-    setTimeout(()=> {
-        document.querySelector('#copied-message').classList.remove('show')
-    }, 2000)
+    showMessage('Copiado!')
 }
 
 function getReportAndCopy() {
@@ -88,24 +73,30 @@ function getReportAndCopy() {
     copyContent()
 }
 
-function checkDeployTime() {
-    document.querySelector("#project").addEventListener("input", () => {
-        let project = document.querySelector("#project").value
-        if (project === "fm-site-br") {
-            document.querySelector("#deploy-time-field").classList.remove("invisible")
-            document.querySelector("#deploy-time-anytime-field").classList.add("invisible")
-        } else {
-            document.querySelector("#deploy-time-field").classList.add("invisible")
-            document.querySelector("#deploy-time-anytime-field").classList.remove("invisible")
+/* Squad */
+function saveSquad() {
+    let squad = document.querySelector("#squad").value
+    localStorage.setItem('squad', squad)
+    document.querySelector("#button-save").classList.add("invisible")
+    showMessage("Salvo!")
+}
 
-            if (project === "outro") {
-                document.querySelector("#project-custom-field").classList.remove("invisible")
-            } else {
-                document.querySelector("#project-custom-field").classList.add("invisible")
-            }
-        }
+function getSquad() {
+    const squad = localStorage.getItem('squad')
+    document.querySelector("#squad").value = squad
+}
+
+function initSquad() {
+    document.querySelector("#squad").addEventListener("focus", () => {
+        document.querySelector("#button-save").classList.remove("invisible")
+    })
+    document.querySelector("#squad").addEventListener("blur", () => {
+        let saved = localStorage.getItem('squad')
+        let inputValue = document.querySelector("#squad").value
+        if (saved === inputValue) document.querySelector("#button-save").classList.add("invisible")
     })
 }
+
 
 /* Theme */
 function initTheme() {
@@ -119,6 +110,15 @@ function setTheme(theme) {
     document.querySelector('#theme').src = `./icons/${theme}.svg`
 }
 
+/* Message Popup */
+function showMessage(message) {
+    document.querySelector('#message').textContent = message
+    document.querySelector('#message').classList.add('show')
+    debugger
+    setTimeout(()=> {
+        document.querySelector('#message').classList.remove('show')
+    }, 2000)
+}
 
 /* Toggles */
 function toggleTheme() {

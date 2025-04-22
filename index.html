@@ -26,34 +26,13 @@
             <div id="squad-field" class="field">
                 <label>Time</label>
                 <input type="text" id="squad" value=""/>
+                <button class="invisible" id="button-save" onclick="saveSquad()">Salvar</button>
             </div>
             
             <div id="form">
                 <div class="field">
                     <label>Ambiente</label>
-                    <select name="project" id="project">
-                        <option value=""></option>
-                        <option value="fm-site-br">fm-site-br</option>
-                        <option value="fm-seo-pages-br">fm-seo-pages-br</option>
-                        <option value="fm-admin-br">fm-admin-br</option>
-                        <option value="fm-denounces-api">fm-denounces-api</option>
-                        <option value="web-fm-seo-br">web-fm-seo-br</option>
-                        <option value="web-fm-consumer">web-fm-consumer</option>
-                        <option value="web-checkout">web-checkout</option>
-                        <option value="web-checkout">web-fpay</option>
-                        <option value="web-checkout">web-checkout</option>
-                        <option value="service-fpay-api">service-fpay-api</option>
-                        <option value="service-gamification-api">service-gamification-api</option>
-                        <option value="service-review-api">service-review-api</option>
-                        <option value="service-search-api">service-search-api</option>
-                        <option value="service-fbot-api">service-fbot-api</option>
-                        <option value="library-fm-components">library-fm-components</option>
-                        <option value="outro">Outro</option>
-                    </select>
-                </div>
-                <div class="field invisible" id="project-custom-field">
-                    <label>Digite o nome do projeto</label>
-                    <input type="text" id="project-custom" value=""/>
+                    <input type="text" id="project" value=""/>
                 </div>
                 <div class="field invisible" id="deploy-time-field">
                     <label>Horas</label>
@@ -68,7 +47,7 @@
                     <label>Horário</label>
                     <input type="time" id="deploy-time-anytime"/>
                 </div>             
-                <div class="field" id="feature-field">
+                <div class="field fullsize" id="feature-field">
                     <label>Épico</label>
                     <input type="text" id="feature" value=""/>
                 </div>
@@ -80,11 +59,11 @@
                     <label>Link task</label>
                     <input type="text" id="task-link" value=""/>
                 </div>
-                <div class="field" id="description">
+                <div class="field fullsize" id="description">
                     <label>Descrição</label>
                     <textarea id="task-description"></textarea>
                 </div>
-                <div class="field" id="area">
+                <div class="field fullsize" id="area">
                     <label>Área</label>
                     <input type="text" id="task-area" value=""/>
                 </div>
@@ -115,7 +94,7 @@
         </main>
 
         <footer class="footer">
-            <span id="copied-message"> 📝 Copiado! </span>
+            <span id="message"></span>
             <div class="contact">
                 <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
                 <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
