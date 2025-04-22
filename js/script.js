@@ -5,7 +5,6 @@ window.onload = () => {
     getSquad()
     getTodayDate()
     document.getElementById('task-description').placeholder = 'Um item por linha'
-    checkDeployTime()
     initSquad()
 }
 
@@ -16,7 +15,7 @@ function getReport() {
     let date = document.querySelector("#date").value
     let project = document.querySelector("#project").value
 
-    let deployTime = document.querySelector("#deploy-time").value
+    let deployTime = document.querySelector("#deploy-time-anytime").value
 
     let feature = document.querySelector("#feature").value
     let taskName = document.querySelector("#task-name").value
@@ -93,7 +92,8 @@ function initSquad() {
     document.querySelector("#squad").addEventListener("blur", () => {
         let saved = localStorage.getItem('squad')
         let inputValue = document.querySelector("#squad").value
-        if (saved === inputValue) document.querySelector("#button-save").classList.add("invisible")
+        debugger
+        if (saved == inputValue) document.querySelector("#button-save").classList.add("invisible")
     })
 }
 
