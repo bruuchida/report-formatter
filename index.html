@@ -5,50 +5,71 @@
         <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
-        <script type="text/javascript" src="./js/script.js"></script>
+        <script type="text/javascript" src="./js/script.js" defer></script>
         <link rel="icon" href="./icons/favicon.svg">
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans" rel="stylesheet">
     </head>
-    <body>
-        <div class="palette-container">
-            <img src="./icons/palette.svg" alt="" id="palette" onclick="togglePalette()">
-            <div id="themes">
-                <span class="theme-choice theme-dark-default" onclick="setTheme('theme-dark-default')"></span>
-                <span class="theme-choice theme-light-default" onclick="setTheme('theme-light-default')"></span>
-                <span class="theme-choice theme-dark-purple" onclick="setTheme('theme-dark-purple')"></span>
-                <span class="theme-choice theme-dark-pink" onclick="setTheme('theme-dark-pink')"></span>
-                <span class="theme-choice theme-light-purple" onclick="setTheme('theme-light-purple')"></span>
-                <span class="theme-choice theme-light-pink"  onclick="setTheme('theme-light-pink')"></span>
+    <body class="theme-light">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Report Formatter</h1>
+                <div class="theme-container">
+                    <img id="theme" src="./icons/theme-light.svg" width="55px" onclick="toggleTheme()">
+                </div>
             </div>
-        </div>
-
-        <h1 class="title">Report Formatter</h1>
+        </header>        
         <main class="content">
+            <div class="field invisible">
+                <label>Data</label>
+                <input id="date" disabled />
+            </div>
+            <div id="squad-field" class="field">
+                <label>Time</label>
+                <input type="text" id="squad" value=""/>
+            </div>
             
             <div id="form">
                 <div class="field">
-                    <label>Time</label>
-                    <input type="text" id="squad" value="Time "/>
-                </div>
-                <div class="field">
-                    <label>Data</label>
-                    <input id="date" disabled />
-                </div>
-                <!-- loop de tasks deployadas -->
-                <div class="field">
-                    <label>Horário inicial</label>
-                    <input type="time" id="deploy-time-initial" />
-                </div>
-                <div class="field">
-                    <label>Horário final</label>
-                    <input type="time" id="deploy-time-final"/>
-                </div>
-                <div class="field">
                     <label>Ambiente</label>
-                    <input type="text" id="project" value=""/>
+                    <select name="project" id="project">
+                        <option value=""></option>
+                        <option value="fm-site-br">fm-site-br</option>
+                        <option value="fm-seo-pages-br">fm-seo-pages-br</option>
+                        <option value="fm-admin-br">fm-admin-br</option>
+                        <option value="fm-denounces-api">fm-denounces-api</option>
+                        <option value="web-fm-seo-br">web-fm-seo-br</option>
+                        <option value="web-fm-consumer">web-fm-consumer</option>
+                        <option value="web-checkout">web-checkout</option>
+                        <option value="web-checkout">web-fpay</option>
+                        <option value="web-checkout">web-checkout</option>
+                        <option value="service-fpay-api">service-fpay-api</option>
+                        <option value="service-gamification-api">service-gamification-api</option>
+                        <option value="service-review-api">service-review-api</option>
+                        <option value="service-search-api">service-search-api</option>
+                        <option value="service-fbot-api">service-fbot-api</option>
+                        <option value="library-fm-components">library-fm-components</option>
+                        <option value="outro">Outro</option>
+                    </select>
                 </div>
-                
-                <div class="field">
-                    <label>Iniciativa</label>
+                <div class="field invisible" id="project-custom-field">
+                    <label>Digite o nome do projeto</label>
+                    <input type="text" id="project-custom" value=""/>
+                </div>
+                <div class="field invisible" id="deploy-time-field">
+                    <label>Horas</label>
+                    <select name="deploy-time" id="deploy-time">
+                        <option value="09h">09h</option>
+                        <option value="10h30">10h30</option>
+                        <option value="14h">14h</option>
+                        <option value="16h30">16h30</option>
+                    </select>
+                </div>
+                <div class="field invisible" id="deploy-time-anytime-field">
+                    <label>Horário</label>
+                    <input type="time" id="deploy-time-anytime"/>
+                </div>             
+                <div class="field" id="feature-field">
+                    <label>Épico</label>
                     <input type="text" id="feature" value=""/>
                 </div>
                 <div class="field">
@@ -67,33 +88,38 @@
                     <label>Área</label>
                     <input type="text" id="task-area" value=""/>
                 </div>
-                <button id="button-format" onclick="getReport()">
-                    FORMATAR REPORT
-                </button>
+                <div class="actions">
+                    <button id="button-visualize" onclick="visualizeReport()">
+                        Visualizar
+                    </button>
+                    <button id="button-copy" onclick="getReportAndCopy()">
+                        Copiar
+                    </button>
+                </div>
+                
             </div>
             <div id="result">
-                Pronto! Agora só enviar...
+                Visualizando formatação
                 <div id="report-formatted">
                 </div>
                 <div class="actions">
-                    <button id="button-back" onclick="backToReport()">
-                        <img src="./icons/back.svg" alt="">
-                        REVISAR
+                    <button id="button-visualize" onclick="backToReport()">
+                        Editar
                     </button>
                     <button id="button-copy" onclick="copyContent()">
-                        COPIAR
-                        <img src="./icons/copy.svg" alt="">
+                        Copiar
                     </button>
                 </div>
             </div>
+            <div id="report-content"></div>
         </main>
 
         <footer class="footer">
+            <span id="copied-message"> 📝 Copiado! </span>
             <div class="contact">
                 <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
                 <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
             </div>
-            <span id="copied-message"> 📝 Copiado! </span>
         </footer>
     </body>
 </html>

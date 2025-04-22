@@ -1,10 +1,8 @@
 .content {
     width: 300px;
     height: fit-content;
-    background: var(--form);
-    padding: 20px;
-    border-radius: 10px;
     margin: 0 auto;
+    padding-top: 18px;
 
     @media (min-width: 580px) {
         width: 500px;
@@ -16,6 +14,7 @@
 }
 
 #form {
+    padding-top: 22px;
     display: grid;
     gap: 12px;
 
@@ -25,18 +24,14 @@
     }
 }
 
-
-.title {
-    font-size: 26px;
-    font-weight: bold;
-    text-align: center;
-    margin: 80px auto 20px;
-}
-
 .field {
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.invisible {
+    display: none;
 }
 
 #description {
@@ -47,25 +42,40 @@
     grid-column: -1/1;
 }
 
-#button-format {
-    width: 100%;
-    grid-column: -1/1;
+#feature-field {
+    grid-column: 3/1;
 }
+
+#button-visualize {
+    background: var(--button-visualize);
+}
+
+#button-copy {
+    background: var(--button-copy);
+}
+
 
 #result {
     display: none;
 }
 
 #report-formatted {
-    background: var(--input);
+    background: var(--form);
+    font-family: sans-serif;
     padding: 10px;
     margin: 10px 0;
-    border-radius: 10px;
     word-break: break-all;
     line-height: 30px;
+}
+
+#report-content {
+    position: absolute;
+    opacity: 0;
+    font-size: 0;
 }
 
 .actions {
     display: flex;
     justify-content: space-between;
+    grid-column: 1/-1;
 }

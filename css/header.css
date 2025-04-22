@@ -1,0 +1,29 @@
+.header {
+  height: 55px;
+  padding: 8px 12px;
+  background: var(--header);
+  display: flex;
+  justify-content: center;
+}
+.header-content {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0;
+  height: 30px;
+}
+
+.theme-container {
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  border-radius: 50%;
+}
