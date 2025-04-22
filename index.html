@@ -49,12 +49,15 @@
                         <option value="outro">Outro</option>
                     </select>
                 </div>
+                <div class="field invisible" id="project-custom-field">
+                    <label>Digite o nome do projeto</label>
+                    <input type="text" id="project-custom" value=""/>
+                </div>
                 <div class="field">
                     <label>Data</label>
                     <input id="date" disabled />
                 </div>
-                <!-- loop de tasks deployadas -->
-                <div class="field" id="deploy-time-field">
+                <div class="field invisible" id="deploy-time-field">
                     <label>Horas</label>
                     <select name="deploy-time" id="deploy-time">
                         <option value="09h">09h</option>
@@ -63,7 +66,7 @@
                         <option value="16h30">16h30</option>
                     </select>
                 </div>
-                <div class="field" id="deploy-time-anytime-field">
+                <div class="field invisible" id="deploy-time-anytime-field">
                     <label>Horário</label>
                     <input type="time" id="deploy-time-anytime"/>
                 </div>             
@@ -108,13 +111,13 @@
                     <button id="button-copy" onclick="copyContent()">
                         Copiar
                     </button>
-                    <span id="copied-message"> 📝 Copiado! </span>
                 </div>
             </div>
             <div id="report-content"></div>
         </main>
 
         <footer class="footer">
+            <span id="copied-message"> 📝 Copiado! </span>
             <div class="contact">
                 <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
                 <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
