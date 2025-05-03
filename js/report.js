@@ -1,7 +1,6 @@
 const date = new Date()
 
 window.onload = () => {
-    initTheme()
     getSquad()
     getTodayDate()
     document.getElementById('task-description').placeholder = 'Um item por linha'
@@ -92,40 +91,8 @@ function initSquad() {
     document.querySelector("#squad").addEventListener("blur", () => {
         let saved = localStorage.getItem('squad')
         let inputValue = document.querySelector("#squad").value
-        debugger
         if (saved == inputValue) document.querySelector("#button-save").classList.add("invisible")
     })
-}
-
-
-/* Theme */
-function initTheme() {
-    const theme = localStorage.getItem('selected-theme')
-    setTheme(theme !== null ? theme : 'theme-light')
-}
-
-function setTheme(theme) {
-    localStorage.setItem('selected-theme', theme);
-    document.body.classList = theme
-    document.querySelector('#theme').src = `./icons/${theme}.svg`
-}
-
-/* Message Popup */
-function showMessage(message) {
-    document.querySelector('#message').textContent = message
-    document.querySelector('#message').classList.add('show')
-    debugger
-    setTimeout(()=> {
-        document.querySelector('#message').classList.remove('show')
-    }, 2000)
-}
-
-/* Toggles */
-function toggleTheme() {
-    const theme = localStorage.getItem('selected-theme')
-    if (!theme) initTheme()
-    if (theme === 'theme-light') setTheme('theme-dark')
-    if (theme === 'theme-dark') setTheme('theme-light')
 }
 
 function backToReport() {

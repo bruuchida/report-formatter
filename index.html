@@ -5,20 +5,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
-        <script type="text/javascript" src="./js/script.js" defer></script>
+        <script type="text/javascript" src="./js/header.js" defer></script>
+        <script type="text/javascript" src="./js/report.js" defer></script>
+        <script type="text/javascript" src="./js/settings.js" defer></script>
         <link rel="icon" href="./icons/favicon.svg">
         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans" rel="stylesheet">
     </head>
     <body class="theme-light">
         <header class="header">
-            <div class="header-content">
-                <h1 class="title">Report Formatter</h1>
+            <div class="header__content">
+                <div class="header__dropdown">
+                    <h1 class="title">Report Formatter</h1>
+                    <img id="dropdown-arrow" src="./icons/arrow.svg" onclick="toggleDropdown()" class="arrow">
+                    <div class="dropdown invisible" id="dropdown">
+                        <span onclick="showConfigurations()">Configurações</span>
+                        <span onclick="showReport()" class="invisible">Formatar report</span>
+                        <span onclick="showAbout()">Sobre</span>
+                    </div>
+                </div>
+                
                 <div class="theme-container">
                     <img id="theme" src="./icons/theme-light.svg" width="55px" onclick="toggleTheme()">
                 </div>
             </div>
         </header>        
-        <main class="content">
+        <main id="report-form" class="content">
             <div class="field invisible">
                 <label>Data</label>
                 <input id="date" disabled />
@@ -33,20 +44,12 @@
                 <div class="field">
                     <label>Ambiente</label>
                     <input type="text" id="project" value=""/>
+                    <select name="custom-projects" id="custom-projects-field" class="invisible"></select>
                 </div>
-
-                <!-- <div class="field invisible" id="deploy-time-field">
-                    <label>Horas</label>
-                    <select name="deploy-time" id="deploy-time">
-                        <option value="09h">09h</option>
-                        <option value="10h30">10h30</option>
-                        <option value="14h">14h</option>
-                        <option value="16h30">16h30</option>
-                    </select>
-                </div> -->
                 <div class="field" id="deploy-time-anytime-field">
                     <label>Horário</label>
                     <input type="time" id="deploy-time-anytime"/>
+                    <select name="preset-hours" id="preset-hours-field" class="invisible"></select>
                 </div>             
                 <div class="field fullsize" id="feature-field">
                     <label>Épico</label>
@@ -94,12 +97,31 @@
             <div id="report-content"></div>
         </main>
 
+        <section id="settings-form" class="content invisible">
+            <h2>Configurações</h2>
+            
+
+            <div class="field">
+                <h3>Adicionar intervalos customizados</h3>
+                <p>Trocará o campo "Horário" para uma lista de horários</p>
+                <span>Adicione os horários separados por uma vírgula.</span>
+                <textarea id="preset-hours-settings" placeholder="Exemplo: 09h, 10h30, 11h"></textarea>
+            </div>
+
+            <div class="field">
+                <h3>Adicionar lista de ambientes / projetos customizados</h3>
+                <p>Trocará o compo "Ambientes" para uma lista customizada</p>
+                <span>Adicione o nome dos ambientes separados por uma vírgula.</span>
+                <textarea id="custom-projects-settings" placeholder="Exemplo: projeto 01, projeto 02, projeto 03"></textarea>
+            </div>
+
+            <p>As custumizações ficarão salvas no navegador</p>
+            <button id="button-save" onclick="saveSettings()">Salvar alterações</button>
+            
+        </section>
+
         <footer class="footer">
             <span id="message"></span>
-            <div class="contact">
-                <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
-                <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
-            </div>
         </footer>
     </body>
 </html>

@@ -28,6 +28,19 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
+    input, textarea {
+        box-shadow: 0px 2px 2px 1px var(--shadow);
+    }
+
+    &--inline {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.spacing {
+    margin: 12px 0;
 }
 
 .invisible {
@@ -39,11 +52,13 @@
 }
 
 #button-visualize, #button-save {
-    background: var(--button-visualize);
+    background: var(--back-color);
+    box-shadow: 0px 2px 2px 1px var(--shadow);
 }
 
 #button-copy {
-    background: var(--button-copy);
+    background: var(--accent-color);
+    box-shadow: 0px 2px 2px 1px var(--shadow);
 }
 
 
@@ -70,4 +85,8 @@
     display: flex;
     justify-content: space-between;
     grid-column: 1/-1;
+}
+
+.icon-button {
+    
 }
