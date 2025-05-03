@@ -60,18 +60,19 @@
     cursor: pointer;
     box-shadow: 4px 5px 8px 2px var(--shadow);
     transition: visibility 2s ease-in-out;
+    list-style-type: none;
 
-    span {
+    li {
         padding: 4px 0;
     }
 
-    span:hover {
+    li:hover {
         text-shadow: 3px 2px 2px var(--shadow);
         color: var(--hover);
     }
 
-    span:not(:first-child) {
-        border-top: 1px solid var(--light);
+    li:not(:last-child) {
+        border-bottom: 1px solid var(--light);
     }
 
     &::selection {

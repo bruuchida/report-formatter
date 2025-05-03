@@ -5,6 +5,7 @@ window.onload = () => {
     getTodayDate()
     document.getElementById('task-description').placeholder = 'Um item por linha'
     initSquad()
+    checkCustomizations()
 }
 
 function getReport() {
@@ -110,4 +111,16 @@ function getTodayDate() {
 function getListFormat(text) {
     var lines = text.split('\n')
     return lines.filter(line => line.trim() !== '').map(line => `<li>${line}</li>`).join('')
+}
+
+function checkCustomizations() {
+    const customHours = localStorage.getItem('hours')
+    if (customHours) {    
+        setCustomField("#deploy-time-anytime", "#preset-hours", JSON.parse(customHours))
+    }
+
+    const customProjects = localStorage.getItem('projects')
+    if (customProjects) {
+        setCustomField("#project", "#custom-projects", JSON.parse(customProjects))
+    }
 }

@@ -17,11 +17,11 @@
                 <div class="header__dropdown">
                     <h1 class="title">Report Formatter</h1>
                     <img id="dropdown-arrow" src="./icons/arrow.svg" onclick="toggleDropdown()" class="arrow">
-                    <div class="dropdown invisible" id="dropdown">
-                        <span onclick="showConfigurations()">Configurações</span>
-                        <span onclick="showReport()" class="invisible">Formatar report</span>
-                        <span onclick="showAbout()">Sobre</span>
-                    </div>
+                    <ul class="dropdown invisible" id="dropdown">
+                        <li onclick="showConfigurations()" class="" id="settings-option">Configurações</li>
+                        <li onclick="showReport()" class="invisible" id="report-option">Formatar report</li>
+                        <li onclick="showAbout()">Sobre</li>
+                    </ul>
                 </div>
                 
                 <div class="theme-container">
@@ -44,12 +44,12 @@
                 <div class="field">
                     <label>Ambiente</label>
                     <input type="text" id="project" value=""/>
-                    <select name="custom-projects" id="custom-projects-field" class="invisible"></select>
+                    <select name="custom-projects" id="custom-projects" class="invisible"></select>
                 </div>
                 <div class="field" id="deploy-time-anytime-field">
                     <label>Horário</label>
                     <input type="time" id="deploy-time-anytime"/>
-                    <select name="preset-hours" id="preset-hours-field" class="invisible"></select>
+                    <select name="preset-hours" id="preset-hours" class="invisible"></select>
                 </div>             
                 <div class="field fullsize" id="feature-field">
                     <label>Épico</label>
@@ -104,15 +104,15 @@
             <div class="field">
                 <h3>Adicionar intervalos customizados</h3>
                 <p>Trocará o campo "Horário" para uma lista de horários</p>
-                <span>Adicione os horários separados por uma vírgula.</span>
-                <textarea id="preset-hours-settings" placeholder="Exemplo: 09h, 10h30, 11h"></textarea>
+                <span>Adicione os horários separados por um ponto e vírgula.</span>
+                <textarea id="preset-hours-settings" placeholder="Exemplo: 09h;10h30;11h"></textarea>
             </div>
 
             <div class="field">
                 <h3>Adicionar lista de ambientes / projetos customizados</h3>
                 <p>Trocará o compo "Ambientes" para uma lista customizada</p>
-                <span>Adicione o nome dos ambientes separados por uma vírgula.</span>
-                <textarea id="custom-projects-settings" placeholder="Exemplo: projeto 01, projeto 02, projeto 03"></textarea>
+                <span>Adicione o nome dos ambientes separados por um ponto e vírgula.</span>
+                <textarea id="custom-projects-settings" placeholder="Exemplo: projeto 01;projeto 02;projeto 03"></textarea>
             </div>
 
             <p>As custumizações ficarão salvas no navegador</p>

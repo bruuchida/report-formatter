@@ -54,6 +54,8 @@ function resetDropdown() {
 function showConfigurations() {
     document.querySelector("#report-form").classList.add('invisible')
     document.querySelector("#settings-form").classList.remove('invisible')
+    document.querySelector("#report-option").classList.remove('invisible')
+    document.querySelector("#settings-option").classList.add('invisible')
     resetDropdown()
 }
 
@@ -61,5 +63,7 @@ function showConfigurations() {
 function showReport() {
     document.querySelector("#report-form").classList.remove('invisible')
     document.querySelector("#settings-form").classList.add('invisible')
+    document.querySelector("#report-option").classList.add('invisible')
+    document.querySelector("#settings-option").classList.remove('invisible')
     resetDropdown()
 }
