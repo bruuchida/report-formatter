@@ -6,6 +6,7 @@ window.onload = () => {
     document.getElementById('task-description').placeholder = 'Um item por linha'
     initSquad()
     checkCustomizations()
+    setSettingsValue()
 }
 
 function getReport() {
@@ -13,9 +14,18 @@ function getReport() {
     document.querySelector("#report-formatted").innerHTML = report
     let squad = document.querySelector("#squad").value
     let date = document.querySelector("#date").value
-    let project = document.querySelector("#project").value
 
-    let deployTime = document.querySelector("#deploy-time-anytime").value
+    let project = document.querySelector("#project").value
+    let customProject = document.querySelector("#custom-projects")
+    if (customProject.value) {
+        project = customProject.value
+    }
+
+    let deployTime = document.querySelector("#deploy-anytime").value
+    let presetHours = document.querySelector("#preset-hours")
+    if (presetHours.value) {
+        deployTime = presetHours.value
+    }
 
     let feature = document.querySelector("#feature").value
     let taskName = document.querySelector("#task-name").value
@@ -30,7 +40,6 @@ function getReport() {
         <b>Hora: ${deployTime}</b><br>
         <b>Épico: </b>${feature}<br>
         <b>Nome da tarefa e link: </b><a href='${taskLink}'>${taskName}</a><br>
-        <hr/>
     `;
 
     if (taskDescription) {
@@ -116,11 +125,25 @@ function getListFormat(text) {
 function checkCustomizations() {
     const customHours = localStorage.getItem('hours')
     if (customHours) {    
-        setCustomField("#deploy-time-anytime", "#preset-hours", JSON.parse(customHours))
+        setCustomField("#deploy-anytime", "#preset-hours", JSON.parse(customHours))
     }
 
     const customProjects = localStorage.getItem('projects')
     if (customProjects) {
         setCustomField("#project", "#custom-projects", JSON.parse(customProjects))
     }
+}
+
+function resetFields() {
+    document.querySelector("#report-formatted").innerHTML = ""
+    document.querySelector("#project").value = ""
+    document.querySelector("#custom-projects").value = ""
+    document.querySelector("#deploy-anytime").value = ""
+    document.querySelector("#preset-hours").value = ""
+    document.querySelector("#feature").value = ""
+    document.querySelector("#task-name").value = ""
+    document.querySelector("#task-link").value = ""
+    document.querySelector("#task-description").value = ""
+    document.querySelector("#task-area").value = ""
+    showMessage("Campos limpos!")
 }
