@@ -1,14 +1,16 @@
 const date = new Date()
 
 window.onload = () => {
+    initTheme()
     getSquad()
     getTodayDate()
-    document.getElementById('task-description').placeholder = 'Um item por linha'
     initSquad()
     checkCustomizations()
     setSettingsValue()
 }
 
+
+/* Report */
 function getReport() {
     let report = ""
     document.querySelector("#report-formatted").innerHTML = report
@@ -81,6 +83,12 @@ function getReportAndCopy() {
     copyContent()
 }
 
+function backToReport() {
+    document.querySelector('#squad-field').style.display = "flex"
+    document.querySelector('#form').style.display = "grid"
+    document.querySelector('#result').style.display = "none"
+}
+
 /* Squad */
 function saveSquad() {
     let squad = document.querySelector("#squad").value
@@ -105,11 +113,6 @@ function initSquad() {
     })
 }
 
-function backToReport() {
-    document.querySelector('#squad-field').style.display = "flex"
-    document.querySelector('#form').style.display = "grid"
-    document.querySelector('#result').style.display = "none"
-}
 
 /* Formats */
 function getTodayDate() {
@@ -122,6 +125,7 @@ function getListFormat(text) {
     return lines.filter(line => line.trim() !== '').map(line => `<li>${line}</li>`).join('')
 }
 
+/* Customization report */
 function checkCustomizations() {
     const customHours = localStorage.getItem('hours')
     if (customHours) {    
@@ -134,6 +138,7 @@ function checkCustomizations() {
     }
 }
 
+/* Erase all fields */
 function resetFields() {
     document.querySelector("#report-formatted").innerHTML = ""
     document.querySelector("#project").value = ""

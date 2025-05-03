@@ -18,9 +18,9 @@
                     <h1 class="title">Report Formatter</h1>
                     <img id="dropdown-arrow" src="./icons/arrow.svg" onclick="toggleDropdown()" class="arrow">
                     <ul class="dropdown invisible" id="dropdown">
-                        <li onclick="showConfigurations()" class="" id="settings-option">Configurações</li>
                         <li onclick="showReport()" class="invisible" id="report-option">Formatar report</li>
-                        <li onclick="showAbout()">Sobre</li>
+                        <li onclick="showConfigurations()" id="settings-option">Configurações</li>
+                        <li onclick="showAbout()" id="about-option">Sobre</li>
                     </ul>
                 </div>
                 
@@ -65,39 +65,28 @@
                 </div>
                 <div class="field fullsize" id="description">
                     <label>Descrição</label>
-                    <textarea id="task-description"></textarea>
+                    <textarea id="task-description" placeholder="Um item por linha"></textarea>
                 </div>
                 <div class="field fullsize" id="area">
                     <label>Área</label>
                     <input type="text" id="task-area" value=""/>
                 </div>
                 <div class="actions">
-                    <button class="button button--secondary" onclick="visualizeReport()">
-                        Visualizar
-                    </button>
-                    <button class="button button--secondary" onclick="resetFields()">
-                        Limpar
-                    </button>
-                    <button class="button button--accent" onclick="getReportAndCopy()">
-                        Copiar
-                    </button>
+                    <button class="button button--secondary" onclick="visualizeReport()">Visualizar</button>
+                    <button class="button button--secondary" onclick="resetFields()">Limpar</button>
+                    <button class="button button--accent" onclick="getReportAndCopy()">Copiar</button>
                 </div>
-                
             </div>
+
             <div id="result">
                 Visualizando formatação
-                <div id="report-formatted">
-                </div>
+                <div id="report-formatted"></div>
+                <div id="report-content"></div>
                 <div class="actions">
-                    <button class="button button--secondary" onclick="backToReport()">
-                        Editar
-                    </button>
-                    <button class="button button--accent" onclick="copyContent()">
-                        Copiar
-                    </button>
+                    <button class="button button--secondary" onclick="backToReport()">Editar</button>
+                    <button class="button button--accent" onclick="copyContent()">Copiar</button>
                 </div>
             </div>
-            <div id="report-content"></div>
         </main>
 
         <section id="settings-form" class="content invisible">
@@ -122,6 +111,17 @@
                 <button class="button button--secondary" onclick="resetSettings()">Excluir</button>
                 <button class="button button--accent" onclick="saveSettings()">Salvar alterações</button>
             </div>
+        </section>
+
+        <section id="about" class="content invisible">
+            <h1>Sobre</h1>
+            <p>O projeto nasceu de uma brincadeira entre os colegas de time que estavam cansados de formatar seus reports após cada deploy.</p>
+            <p>Qualquer sugestão de melhoria, entre em contato!</p>
+
+            <ul class="contact">
+                <li><a href="https://www.linkedin.com/in/bruna-tiemi-uchida"><img src="./icons/linkedin.svg"></a></li>
+                <li><a href="https://github.com/bruuchida"><img src="./icons/github.svg"></a></li>
+            </ul>                    
         </section>
 
         <footer class="footer">

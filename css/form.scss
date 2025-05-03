@@ -88,3 +88,12 @@
     grid-column: 1/-1;
     margin: 20px 0 0;
 }
+
+.contact {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+}

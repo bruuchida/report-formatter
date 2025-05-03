@@ -11,6 +11,7 @@
     --shadow: rgb(67 79 95);
     --light: #F1F1F1;
     --hover: #709AD1;
+    --icon-color: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(1834%) hue-rotate(215deg) brightness(111%) contrast(81%);
 }
 
 .theme-light {
@@ -26,4 +27,5 @@
     --shadow: #164fa557;
     --light: #F1F1F1;
     --hover: #164fa5;
+    --icon-color: brightness(0) saturate(100%) invert(0%) sepia(96%) saturate(7474%) hue-rotate(28deg) brightness(96%) contrast(97%);
 }

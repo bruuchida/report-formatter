@@ -39,9 +39,9 @@
 }
 
 .arrow {
-    fill: var(--text);
     cursor: pointer;
     transition: rotate 0.1s ease-out;
+    filter: var(--icon-color);
 }
 
 .upwards {
@@ -71,11 +71,11 @@
         color: var(--hover);
     }
 
-    li:not(:last-child) {
-        border-bottom: 1px solid var(--light);
-    }
-
     &::selection {
         visibility: visible;
+    }
+
+    .has-separator {
+        border-bottom: 1px solid var(--light);
     }
 }
