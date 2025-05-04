@@ -24,10 +24,13 @@ function getReport() {
     }
 
     let deployTime = document.querySelector("#deploy-anytime").value
-    let presetHours = document.querySelector("#preset-hours")
-    if (presetHours.value) {
-        deployTime = presetHours.value
-    }
+    
+    let isPresetHours = document.querySelector("#is-preset").checked
+    let presetHours = document.querySelector("#preset-hours").value
+
+    let hours = deployTime
+
+    if (isPresetHours) hours = presetHours
 
     let feature = document.querySelector("#feature").value
     let taskName = document.querySelector("#task-name").value
@@ -39,7 +42,7 @@ function getReport() {
         <b>Time ${squad}</b><br>
         <b><i>Data: ${date}</i></b><br>
         <b>Ambiente: </b>${project}<br>
-        <b>Hora: ${deployTime}</b><br>
+        <b>Hora: ${hours}</b><br>
         <b>Épico: </b>${feature}<br>
         <b>Nome da tarefa e link: </b><a href='${taskLink}'>${taskName}</a><br>
     `;
@@ -87,6 +90,20 @@ function backToReport() {
     document.querySelector('#squad-field').style.display = "flex"
     document.querySelector('#form').style.display = "grid"
     document.querySelector('#result').style.display = "none"
+}
+
+function toggleHoursFields() {
+    const preset = document.querySelector('#preset-hours').classList
+    const dynamic = document.querySelector('#deploy-anytime').classList
+    if (preset.contains('invisible')) {
+        preset.remove('invisible')
+        dynamic.add('invisible')
+        document.querySelector("#is-preset").checked = true
+    } else {
+        preset.add('invisible')
+        dynamic.remove('invisible')
+        document.querySelector("#is-preset").checked = false
+    }
 }
 
 /* Squad */

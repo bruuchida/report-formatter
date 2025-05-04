@@ -6,6 +6,7 @@ function saveSettings() {
     let hoursFormatted = presetHours.split(",")
     localStorage.setItem('hours', JSON.stringify(hoursFormatted))
     setCustomField("#deploy-anytime", "#preset-hours", hoursFormatted)
+    
   }
 
   if (customProjects) {
@@ -13,7 +14,15 @@ function saveSettings() {
     localStorage.setItem('projects', JSON.stringify(projectsFormatted))
     setCustomField("#project", "#custom-projects", projectsFormatted)
   }
-  
+
+  let dynamicHours = document.querySelector("#dynamic-hours-settings").checked
+  localStorage.setItem('dynamic-hours', dynamicHours)
+  if (dynamicHours) {
+    document.querySelector("#dynamic-hours-field").classList.remove('invisible')
+  } else {
+    document.querySelector("#dynamic-hours-field").classList.add('invisible')
+  }
+    
   resetFields()
   showMessage('Configurações salvas!')
 }
@@ -57,14 +66,21 @@ function resetSettings() {
 function setSettingsValue () {
   const hours = localStorage.getItem('hours')
   const projects = localStorage.getItem('projects')
+  const dynamicHours = localStorage.getItem('dynamic-hours')
 
   if (hours) {
     const hoursFormatted = hours.replaceAll('"', '').replace('[', '').replace(']', '')
     document.querySelector('#preset-hours-settings').textContent = hoursFormatted
+    document.querySelector('#is-preset').checked = true
   }
 
   if (projects) {
     const projectsFormatted = projects.replaceAll('"', '').replace('[', '').replace(']', '')
     document.querySelector('#custom-projects-settings').textContent = projectsFormatted
+  }
+  
+  if (JSON.parse(dynamicHours)) {
+    document.querySelector('#dynamic-hours-field').classList.remove('invisible')
+    document.querySelector('#dynamic-hours-settings').checked = true
   }
 }
