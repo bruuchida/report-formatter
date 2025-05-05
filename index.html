@@ -5,20 +5,32 @@
         <meta http-equiv="X-UA-Compatible" content="IE=7">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/style.css">
-        <script type="text/javascript" src="./js/script.js" defer></script>
+        <script type="text/javascript" src="./js/utils.js" defer></script>
+        <script type="text/javascript" src="./js/header.js" defer></script>
+        <script type="text/javascript" src="./js/report.js" defer></script>
+        <script type="text/javascript" src="./js/settings.js" defer></script>
         <link rel="icon" href="./icons/favicon.svg">
         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans" rel="stylesheet">
     </head>
     <body class="theme-light">
         <header class="header">
-            <div class="header-content">
-                <h1 class="title">Report Formatter</h1>
+            <div class="header__content">
+                <div class="header__dropdown">
+                    <h1 class="title">Report Formatter</h1>
+                    <img id="dropdown-arrow" src="./icons/arrow.svg" onclick="toggleDropdown()" class="arrow">
+                    <ul class="dropdown invisible" id="dropdown">
+                        <li onclick="showReport()" class="invisible" id="report-option">Formatar report</li>
+                        <li onclick="showConfigurations()" id="settings-option">Configurações</li>
+                        <li onclick="showAbout()" id="about-option">Sobre</li>
+                    </ul>
+                </div>
+                
                 <div class="theme-container">
                     <img id="theme" src="./icons/theme-light.svg" width="55px" onclick="toggleTheme()">
                 </div>
             </div>
         </header>        
-        <main class="content">
+        <main id="report-form" class="content">
             <div class="field invisible">
                 <label>Data</label>
                 <input id="date" disabled />
@@ -26,27 +38,24 @@
             <div id="squad-field" class="field">
                 <label>Time</label>
                 <input type="text" id="squad" value=""/>
-                <button class="invisible" id="button-save" onclick="saveSquad()">Salvar</button>
+                <button id="button-save" class="invisible button button--secondary" onclick="saveSquad()">Salvar</button>
             </div>
             
             <div id="form">
                 <div class="field">
                     <label>Ambiente</label>
                     <input type="text" id="project" value=""/>
+                    <select name="custom-projects" id="custom-projects" class="invisible"></select>
                 </div>
-
-                <!-- <div class="field invisible" id="deploy-time-field">
-                    <label>Horas</label>
-                    <select name="deploy-time" id="deploy-time">
-                        <option value="09h">09h</option>
-                        <option value="10h30">10h30</option>
-                        <option value="14h">14h</option>
-                        <option value="16h30">16h30</option>
-                    </select>
-                </div> -->
-                <div class="field" id="deploy-time-anytime-field">
+                <div class="field invisible" id="dynamic-hours-field">
+                    <label>Adicionar horário manual</label>
+                    <input type="checkbox" id="dynamic-hours" onclick="toggleHoursFields()"/>
+                </div>    
+                <div class="field" id="deploy-anytime-field">
                     <label>Horário</label>
-                    <input type="time" id="deploy-time-anytime"/>
+                    <input type="checkbox" id="is-preset" class="invisible"/>
+                    <input type="time" id="deploy-anytime"/>
+                    <select name="preset-hours" id="preset-hours" class="invisible"></select>
                 </div>             
                 <div class="field fullsize" id="feature-field">
                     <label>Épico</label>
@@ -62,44 +71,67 @@
                 </div>
                 <div class="field fullsize" id="description">
                     <label>Descrição</label>
-                    <textarea id="task-description"></textarea>
+                    <textarea id="task-description" placeholder="Um item por linha"></textarea>
                 </div>
                 <div class="field fullsize" id="area">
                     <label>Área</label>
                     <input type="text" id="task-area" value=""/>
                 </div>
                 <div class="actions">
-                    <button id="button-visualize" onclick="visualizeReport()">
-                        Visualizar
-                    </button>
-                    <button id="button-copy" onclick="getReportAndCopy()">
-                        Copiar
-                    </button>
+                    <button class="button button--secondary" onclick="visualizeReport()">Visualizar</button>
+                    <button class="button button--secondary" onclick="resetFields()">Limpar</button>
+                    <button class="button button--accent" onclick="getReportAndCopy()">Copiar</button>
                 </div>
-                
             </div>
+
             <div id="result">
                 Visualizando formatação
-                <div id="report-formatted">
-                </div>
+                <div id="report-formatted"></div>
+                <div id="report-content"></div>
                 <div class="actions">
-                    <button id="button-visualize" onclick="backToReport()">
-                        Editar
-                    </button>
-                    <button id="button-copy" onclick="copyContent()">
-                        Copiar
-                    </button>
+                    <button class="button button--secondary" onclick="backToReport()">Editar</button>
+                    <button class="button button--accent" onclick="copyContent()">Copiar</button>
                 </div>
             </div>
-            <div id="report-content"></div>
         </main>
+
+        <section id="settings-form" class="content invisible">
+            <h2>Configurações</h2>
+            <p>As customizações ficarão salvas localmente no navegador</p>
+
+            <div class="field">
+                <h3>Adicionar lista de ambientes / projetos customizados</h3>
+                <p>Trocará o compo "Ambientes" para uma lista de valores</p>
+                <span>Adicione o nome dos ambientes separados por uma vírgula</span>
+                <textarea id="custom-projects-settings" placeholder="Exemplo: projeto 01, projeto 02, projeto 03"></textarea>
+            </div>
+
+            <div class="field">
+                <h3>Adicionar intervalos customizados</h3>
+                <p>Trocará o campo "Horário" para uma lista de horários</p>
+                <span>Adicione os horários separados por uma vírgula</span>
+                <textarea id="preset-hours-settings" placeholder="Exemplo: 09h, 10h30, 11h"></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="button button--secondary" onclick="resetSettings()">Excluir</button>
+                <button class="button button--accent" onclick="saveSettings()">Salvar alterações</button>
+            </div>
+        </section>
+
+        <section id="about" class="content invisible">
+            <h1>Sobre</h1>
+            <p>O projeto nasceu de uma brincadeira entre os colegas de time que estavam cansados de formatar seus reports após cada deploy.</p>
+            <p>Qualquer sugestão de melhoria, entre em contato!</p>
+
+            <ul class="contact">
+                <li><a href="https://www.linkedin.com/in/bruna-tiemi-uchida"><img src="./icons/linkedin.svg"></a></li>
+                <li><a href="https://github.com/bruuchida"><img src="./icons/github.svg"></a></li>
+            </ul>                    
+        </section>
 
         <footer class="footer">
             <span id="message"></span>
-            <div class="contact">
-                <a href="https://github.com/bruuchida" target="_blank"><img src="./icons/github.svg" alt="github"></a>
-                <a href="https://linkedin.com/in/bruna-tiemi-uchida" target="_blank"><img src="./icons/linkedin.svg" alt="linkedin"></a>
-            </div>
         </footer>
     </body>
 </html>

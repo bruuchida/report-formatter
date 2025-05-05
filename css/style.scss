@@ -1,7 +1,8 @@
 @use "./theme.css";
 @use "./header.css";
-@use"./form.css";
-@use"./footer.css";
+@use "./form.css";
+@use "./settings.css";
+@use "./footer.css";
 
 body {
     margin: 0;
@@ -38,7 +39,13 @@ textarea {
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator { 
-    filter: var(--icon-color);
+    filter: var(--input-text);
+}
+
+input[type="checkbox"] { 
+    width: 28px;
+    width: 28px;
+    box-shadow: initial;
 }
 
 input:disabled {

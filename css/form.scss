@@ -28,6 +28,19 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
+    input, textarea, select {
+        box-shadow: 0px 2px 2px 1px var(--shadow);
+    }
+
+    &--inline {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.spacing {
+    margin: 12px 0;
 }
 
 .invisible {
@@ -38,14 +51,17 @@
     grid-column: -1/1;
 }
 
-#button-visualize, #button-save {
-    background: var(--button-visualize);
-}
+.button {
+    &--secondary {
+        background: var(--back-color);
+        box-shadow: 0px 2px 2px 1px var(--shadow);
+    }
 
-#button-copy {
-    background: var(--button-copy);
+    &--accent {
+        background: var(--accent-color);
+        box-shadow: 0px 2px 2px 1px var(--shadow);
+    }   
 }
-
 
 #result {
     display: none;
@@ -68,6 +84,16 @@
 
 .actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     grid-column: 1/-1;
+    margin: 20px 0 0;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
 }
