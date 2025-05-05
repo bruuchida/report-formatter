@@ -14,29 +14,29 @@ window.onload = () => {
 function getReport() {
     let report = ""
     document.querySelector("#report-formatted").innerHTML = report
-    let squad = document.querySelector("#squad").value
-    let date = document.querySelector("#date").value
+    let squad = getFieldValue("#squad")
+    let date = getFieldValue("#date")
 
-    let project = document.querySelector("#project").value
-    let customProject = document.querySelector("#custom-projects")
-    if (customProject.value) {
-        project = customProject.value
+    let project = getFieldValue("#project")
+    let customProject = getFieldValue("#custom-projects")
+    if (customProject) {
+        project = customProject
     }
 
-    let deployTime = document.querySelector("#deploy-anytime").value
+    let deployTime = getFieldValue("#deploy-anytime")
     
     let isPresetHours = document.querySelector("#is-preset").checked
-    let presetHours = document.querySelector("#preset-hours").value
+    let presetHours = getFieldValue("#preset-hours")
 
     let hours = deployTime
 
     if (isPresetHours) hours = presetHours
 
-    let feature = document.querySelector("#feature").value
-    let taskName = document.querySelector("#task-name").value
-    let taskLink = document.querySelector("#task-link").value
-    let taskDescription = getListFormat(document.querySelector("#task-description").value)
-    let taskArea = document.querySelector("#task-area").value
+    let feature = getFieldValue("#feature")
+    let taskName = getFieldValue("#task-name")
+    let taskLink = getFieldValue("#task-link")
+    let taskDescription = getListFormat(getFieldValue("#task-description"))
+    let taskArea = getFieldValue("#task-area")
 
     report = `
         <b>Time ${squad}</b><br>
@@ -108,7 +108,7 @@ function toggleHoursFields() {
 
 /* Squad */
 function saveSquad() {
-    let squad = document.querySelector("#squad").value
+    let squad = getFieldValue("#squad")
     localStorage.setItem('squad', squad)
     document.querySelector("#button-save").classList.add("invisible")
     showMessage("Salvo!")
@@ -125,28 +125,19 @@ function initSquad() {
     })
     document.querySelector("#squad").addEventListener("blur", () => {
         let saved = localStorage.getItem('squad')
-        let inputValue = document.querySelector("#squad").value
+        let inputValue = getFieldValue("#squad")
         if (saved == inputValue) document.querySelector("#button-save").classList.add("invisible")
     })
 }
 
-
-/* Formats */
-function getTodayDate() {
-    let temp =  date.getDate().toString().padStart(2, 0) + '/' + (date.getMonth() + 1).toString().padStart(2, 0) + '/' + date.getFullYear()
-    document.querySelector('#date').value = temp
-}
-
-function getListFormat(text) {
-    var lines = text.split('\n')
-    return lines.filter(line => line.trim() !== '').map(line => `<li>${line}</li>`).join('')
-}
 
 /* Customization report */
 function checkCustomizations() {
     const customHours = localStorage.getItem('hours')
     if (customHours) {    
         setCustomField("#deploy-anytime", "#preset-hours", JSON.parse(customHours))
+        document.querySelector("#is-preset").checked = true
+        document.querySelector("#dynamic-hours-field").classList.remove('invisible')
     }
 
     const customProjects = localStorage.getItem('projects')
@@ -158,14 +149,15 @@ function checkCustomizations() {
 /* Erase all fields */
 function resetFields() {
     document.querySelector("#report-formatted").innerHTML = ""
-    document.querySelector("#project").value = ""
-    document.querySelector("#custom-projects").value = ""
-    document.querySelector("#deploy-anytime").value = ""
-    document.querySelector("#preset-hours").value = ""
-    document.querySelector("#feature").value = ""
-    document.querySelector("#task-name").value = ""
-    document.querySelector("#task-link").value = ""
-    document.querySelector("#task-description").value = ""
-    document.querySelector("#task-area").value = ""
+    setEmptyValue("#project")
+    setEmptyValue("#custom-projects")
+    setEmptyValue("#deploy-anytime")
+    document.querySelector("#is-preset").checked = false
+    setEmptyValue("#preset-hours")
+    setEmptyValue("#feature")
+    setEmptyValue("#task-name")
+    setEmptyValue("#task-link")
+    setEmptyValue("#task-description")
+    setEmptyValue("#task-area")
     showMessage("Campos limpos!")
 }

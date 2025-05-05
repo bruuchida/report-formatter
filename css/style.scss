@@ -39,7 +39,7 @@ textarea {
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator { 
-    filter: var(--icon-color);
+    filter: var(--input-text);
 }
 
 input[type="checkbox"] { 

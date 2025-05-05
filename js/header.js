@@ -37,7 +37,7 @@ function initTheme() {
 }
 
 function setTheme(theme) {
-    localStorage.setItem('selected-theme', theme);
+    localStorage.setItem('selected-theme', theme)
     document.body.classList = theme
     document.querySelector('#theme').src = `./icons/${theme}.svg`
 }
