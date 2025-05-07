@@ -65,14 +65,14 @@ function getReport() {
 }
 
 function visualizeReport() {
-    getReport();
+    getReport()
     document.querySelector('#form').style.display = "none"
     document.querySelector('#squad-field').style.display = "none"
-    document.querySelector('#result').style.display = "block"
+    document.querySelector('#result').classList.remove('invisible')
 }
 
 function copyContent() {
-    const range = document.createRange();
+    const range = document.createRange()
     range.selectNode(document.querySelector("#report-content"))
     window.getSelection().removeAllRanges()
     window.getSelection().addRange(range)
@@ -89,7 +89,7 @@ function getReportAndCopy() {
 function backToReport() {
     document.querySelector('#squad-field').style.display = "flex"
     document.querySelector('#form').style.display = "grid"
-    document.querySelector('#result').style.display = "none"
+    document.querySelector('#result').classList.add('invisible')
 }
 
 function toggleHoursFields() {
